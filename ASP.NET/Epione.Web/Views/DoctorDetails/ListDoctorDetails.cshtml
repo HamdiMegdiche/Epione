@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "ListDoctorDetails";
+}
+
+<main>
+    <div id="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li><a href="@Url.Action("ListSearchForDoctor", "SearchDoctor")">List Doctors</a></li>
+                <li><a href="#">Category</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /breadcrumb -->
+    @foreach (var r in ViewBag.result)
+    {
+        <div class="container margin_60">
+            <div class="row">
+                <aside class="col-xl-3 col-lg-4" id="sidebar">
+                    <div class="box_profile">
+                        <figure>
+                            <img src="http://via.placeholder.com/565x565.jpg" alt="" class="img-fluid">
+                        </figure>
+                        <small>@r.specialty.name</small>
+                        <h1>DR. @r.lastName @r.firstName</h1>
+                        <span class="rating">
+                            <i class="icon_star voted"></i>
+                            <i class="icon_star voted"></i>
+                            <i class="icon_star voted"></i>
+                            <i class="icon_star voted"></i>
+                            <i class="icon_star"></i>
+                            <small>(145)</small>
+                            <a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="img/badges/badge_1.svg" width="15" height="15" alt=""></a>
+                        </span>
+                        <ul class="statistic">
+                            <li>854 Views</li>
+                            <li>124 Patients</li>
+                        </ul>
+                        <ul class="contacts">
+                            <li><h6>Address</h6>@r.address</li>
+                            <li><h6>Phone</h6><a href="tel://000434323342">+216 @r.phoneNumber</a></li>
+                        </ul>
+                    </div>
+                </aside>
+                <!-- /asdide -->
+
+                <div class="col-xl-9 col-lg-8">
+
+                    <div class="box_general_2 add_bottom_45">
+                        <div class="main_title_4">
+                            <h3><i class="icon_circle-slelected"></i>Select your date and time</h3>
+                        </div>
+
+                        <div class="row add_bottom_45">
+                            <div class="col-lg-7">
+                                <div class="form-group">
+                                    <div id="calendar"></div>
+                                    <input type="hidden" id="my_hidden_input">
+                                    <ul class="legend">
+                                        <li><strong></strong>Available</li>
+                                        <li><strong></strong>Not available</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <ul class="time_select version_2 add_top_20">
+                                    <li>
+                                        <input type="radio" id="radio1" name="radio_time" value="09.30am">
+                                        <label for="radio1">09.30am</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio2" name="radio_time" value="10.00am">
+                                        <label for="radio2">10.00am</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio3" name="radio_time" value="10.30am">
+                                        <label for="radio3">10.30am</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio4" name="radio_time" value="11.00am">
+                                        <label for="radio4">11.00am</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio5" name="radio_time" value="11.30am">
+                                        <label for="radio5">11.30am</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio6" name="radio_time" value="12.00am">
+                                        <label for="radio6">12.00am</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio7" name="radio_time" value="01.30pm">
+                                        <label for="radio7">01.30pm</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio8" name="radio_time" value="02.00pm">
+                                        <label for="radio8">02.00pm</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio9" name="radio_time" value="02.30pm">
+                                        <label for="radio9">02.30pm</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio10" name="radio_time" value="03.00pm">
+                                        <label for="radio10">03.00pm</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio11" name="radio_time" value="03.30pm">
+                                        <label for="radio11">03.30pm</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio12" name="radio_time" value="04.00pm">
+                                        <label for="radio12">04.00pm</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /row -->
+
+                        <div class="main_title_4">
+                            <h3><i class="icon_circle-slelected"></i>Select visit - motive</h3>
+                        </div>
+                        <ul class="treatments clearfix">
+                            @foreach (var rr in ViewBag.result1)
+                            {
+                                <li>
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="css-checkbox" id="visit1" name="visit1">
+                                        <label for="visit1" class="css-label">@rr.name </label>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+
+                        <div class="main_title_4">
+                            <h3><i class="icon_circle-slelected"></i>Write visit - message (Optional)</h3>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea rows="5" id="message_contact" name="message_contact" class="form-control" style="height:100px;" placeholder="Write your message"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-center"><a href="booking-page.html" class="btn_1 medium">Book Now</a></div>
+                    </div>
+                    <!-- /box_general -->
+
+
+
+
+
+
+                    <div class="tabs_styled_2">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-expanded="true">General info</a>
+                            </li>
+
+                        </ul>
+                        <!--/nav-tabs -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+
+                                <div class="indent_title_in">
+                                    <i class="pe-7s-user"></i>
+                                    <h3>Professional statement</h3>
+                                    <p>@r.specialty.name</p>
+                                </div>
+                                <div class="wrapper_indent">
+                                    <p>@r.description</p>
+                                    <h6>Specialtys</h6>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <ul class="bullets">
+                                                @foreach (var rr in ViewBag.result1)
+                                                {
+                                                    <li>@rr.name</li>
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                    <!-- /row-->
+                                </div>
+                                <!-- /wrapper indent -->
+
+                                <hr>
+
+
+
+                            </div>
+                            <!-- /tab_2 -->
+                            <!-- /tab_3 -->
+                        </div>
+                        <!-- /tab-content -->
+                    </div>
+                    <!-- /tabs_styled -->
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+    }
+    <!-- /container -->
+</main>
+

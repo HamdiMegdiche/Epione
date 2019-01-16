@@ -1,0 +1,13 @@
+RemoteSystemsTempFiles
+.metadata/
+.recommenders/
+
+epione-ear/target
+epione-ear/build
+
+epione-ejb/target
+epione-ejb/build
+
+epione-web/target
+epione-web/build
+

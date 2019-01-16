@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <br>
+    <!-- logo -->
+    <ion-grid>
+        <ion-row justify-content-start>
+          <ion-col size="3">
+          </ion-col>
+          <ion-col size="6">
+              <img logo src="../../assets/logo.png" />
+          </ion-col>
+          <ion-col size="3">
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-row>
+       
+      <ion-col col-10 offset-1 col-md-6 offset-md-3>
+       
+          <ion-row align-items-start>
+            <ion-col col-12>
+              <h1><strong>Epione</strong> Account</h1>
+            </ion-col>
+          </ion-row>
+          <!-- Input-field -->
+          <ion-row>
+            <ion-col col-12>
+            
+            <!-- Section form>-->
+            <form padding [formGroup]="loginForm">
+                <div class="form-group">
+                  <div input-field>
+                      <ion-item>
+                          <ion-label position="floating" color="primary">Email</ion-label>
+                          <ion-input formControlName="email" clear-input type="email"></ion-input>
+                      </ion-item>
+                  </div>
+                </div>
+                <div  *ngIf="email.hasError('required') && email.touched">
+                    <ion-label margin>
+                      <small class="text-danger">Email is required</small> 
+                    </ion-label>      
+                </div>      
+             
+
+              <div class="form-group">
+                  <div input-field>
+                      <ion-item>
+                          <ion-label position="floating" color="primary">Password</ion-label>
+                          <ion-input  required  password-toggle="true"
+                             type="password" formControlName="password"></ion-input>
+                      </ion-item>
+                  </div>      
+              </div>
+              <div  *ngIf="password.hasError('required') && password.touched">
+                  <ion-label margin>
+                    <small class="text-danger">password is required</small> 
+                  </ion-label>      
+              </div>
+
+              <br>
+              <ion-label margin  *ngIf="errorMsg">
+                  <small class="text-danger">  {{errorMsg}}</small>  
+                  <br>    
+              </ion-label>
+             
+              <!-- Login button -->
+                <ion-button margin expand="block" fill="outline" [disabled]="loginForm.invalid" (click)="SignIn()">Sign In</ion-button>
+              
+            </form>
+            </ion-col>
+          </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
